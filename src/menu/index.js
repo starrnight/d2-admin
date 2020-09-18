@@ -10,6 +10,8 @@ import demoPlayground from './modules/demo-playground'
 import demoD2Crud from './modules/demo-d2-crud'
 // CRUD PLUS
 import demoD2CrudPlus from './modules/demo-d2-crud-plus'
+// CRUD PLUS
+import sys from './modules/sys'
 
 /**
  * @description 给菜单数据补充上 path 字段
@@ -28,6 +30,7 @@ function supplementPath (menu) {
 
 // 菜单 侧边栏
 export const menuAside = supplementPath([
+  sys,
   demoComponents,
   demoPlugins,
   demoPlayground,
@@ -40,7 +43,10 @@ export const menuHeader = supplementPath([
   {
     path: '/index',
     title: '首页',
-    icon: 'home'
+    icon: 'home',
+    children: [
+      sys
+    ]
   },
   demoPlayground,
   demoComponents,

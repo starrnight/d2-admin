@@ -3,6 +3,7 @@ import d2Crud from './modules/d2-crud'
 import d2CrudPlus from './modules/d2-crud-plus'
 import plugins from './modules/plugins'
 import components from './modules/components'
+import sys from './modules/sys'
 
 import layoutHeaderAside from '@/layout/header-aside'
 
@@ -55,6 +56,7 @@ const frameIn = [
     ]
   },
   playground,
+  sys,
   d2Crud,
   d2CrudPlus,
   plugins,

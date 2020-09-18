@@ -12,7 +12,14 @@ function createService () {
   const service = axios.create()
   // 请求拦截
   service.interceptors.request.use(
-    config => config,
+    config => {
+      config.method = 'post'
+      if (config.params !== undefined) {
+        config.data = config.params
+        config.params = undefined
+      }
+      return config
+    },
     error => {
       // 发送失败
       console.log(error)
@@ -33,7 +40,7 @@ function createService () {
       } else {
         // 有 code 代表这是一个后端接口 可以进行进一步的判断
         switch (code) {
-          case 0:
+          case '00000':
             // [ 示例 ] code === 0 代表没有错误
             return dataAxios.data
           case 'xxx':
@@ -80,7 +87,8 @@ function createRequestFunction (service) {
     const configDefault = {
       headers: {
         Authorization: token,
-        'Content-Type': get(config, 'headers.Content-Type', 'application/json')
+        'Content-Type': get(config, 'headers.Content-Type', 'application/json'),
+        RequestInfo: '{"appCode":"management-after-sale","requestId":12345,"timeZone":"UTC","language":"EN","currentUserId":"amltaGVAZXRla2NpdHkuY29tLmNu"}'
       },
       timeout: 5000,
       baseURL: process.env.VUE_APP_API,
