@@ -21,9 +21,9 @@ export function parse (jsonString = '{}', defaultValue = {}) {
  * @description 接口请求返回
  * @param {Any} data 返回值
  * @param {String} msg 状态信息
- * @param {Number} code 状态码
+ * @param {String} code 状态码
  */
-export function response (data = {}, msg = '', code = 0) {
+export function response (data = {}, msg = '', code = '00000') {
   return [
     200,
     { code, msg, data }
@@ -43,9 +43,9 @@ export function responseSuccess (data = {}, msg = '成功') {
  * @description 接口请求返回 错误返回
  * @param {Any} data 返回值
  * @param {String} msg 状态信息
- * @param {Number} code 状态码
+ * @param {String} code 状态码
  */
-export function responseError (data = {}, msg = '请求失败', code = 500) {
+export function responseError (data = {}, msg = '请求失败', code = '500') {
   return response(data, msg, code)
 }
 
@@ -71,7 +71,7 @@ export function errorLog (error) {
   Message({
     message: error.message,
     type: 'error',
-    duration: 5 * 1000
+    duration: 30 * 1000
   })
 }
 

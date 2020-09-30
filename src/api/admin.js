@@ -29,6 +29,22 @@ export const sysMenuService = {
     })
   },
   /**
+   * 获取api接口配置
+   */
+  getApiList () {
+    return request({
+      url: '/user-center/v1/api-config/list'
+    })
+  },
+  /**
+   * 获取api接口配置
+   */
+  getPermissionList () {
+    return request({
+      url: '/user-center/v1/api-config/list'
+    })
+  },
+  /**
      * 获取权限
      */
   getPermissions () {
@@ -80,6 +96,14 @@ export const sysRoleService = {
   myMenu () {
     return request({
       url: '/user-center/v1/user/my-info'
+    })
+  },
+  /**
+   * 获取站点
+   */
+  getSiteList () {
+    return request({
+      url: '/user-center/v1/site/list'
     })
   }
 }

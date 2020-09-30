@@ -18,6 +18,7 @@ function createService () {
         config.data = config.params
         config.params = undefined
       }
+      console.log(config.data)
       return config
     },
     error => {
@@ -90,7 +91,7 @@ function createRequestFunction (service) {
         'Content-Type': get(config, 'headers.Content-Type', 'application/json'),
         RequestInfo: '{"appCode":"management-after-sale","requestId":12345,"timeZone":"UTC","language":"EN","currentUserId":"amltaGVAZXRla2NpdHkuY29tLmNu"}'
       },
-      timeout: 5000,
+      timeout: 50000,
       baseURL: process.env.VUE_APP_API,
       data: {}
     }
